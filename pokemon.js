@@ -11,6 +11,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=${MAX_POKEMON}`)     // first: fe
 .then((response) => response.json())                                // then you receive the obj. w/ an array of 151 results for pokemons //
 .then((data) => {                                                   // then you take that data //
     allPokemons = data.results;
+    displayPokemons(allPokemons);
 });
 
 async function fetchPokemonDatabeforeRedirect(id) {                 // enabling non-blocking behavior for the API call //
@@ -42,7 +43,7 @@ function displayPokemons(pokemon) {                         // emptying the list
         <p class="caption-fonts">#${pokemonID} </p>
         </div>
         <div class="img-wrap">
-        <<img src="https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/other/dream-world/${pokemonId}.svg" alt="${pokemon.name}" /> 
+        <img src="https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/other/dream-world/${pokemonID}.svg" alt="${pokemon.name}" />
         </div>
         <div class="name-wrap">
         <p class="body3-fonts">#${pokemon.name} </p>
