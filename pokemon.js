@@ -60,3 +60,19 @@ function displayPokemons(pokemon) {                         // emptying the list
         listWrapper.appendChild(listItem);                                  // adding all theses to the list wrapper //
     });                                                         
 }
+
+searchInput.addEventListener("keyup", handleSearch);
+
+function handleSearch() {
+    const searchTerm = searchInput.value.toLowerCase();
+    let filteredPokemons;
+    
+    if (numberFilter.checked) {
+        filteredPokemons = allPokemons.filter((pokemon) => {
+            const pokemonID = pokemon.url.split("/")[6];
+            return pokemonID.startsWith(searchTerm);
+        }); 
+    } else {
+        
+    }
+}
