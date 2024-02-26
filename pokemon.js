@@ -73,18 +73,18 @@ function handleSearch() {
             return pokemonID.startsWith(searchTerm);
         }); 
     } else if (nameFilter.checked) {
-        filteredPokemons = allPokemons.filter((pokemon) => {
+        filteredPokemons = allPokemons.filter((pokemon) => 
            pokemon.name.toLowerCase().startsWith(searchTerm)
-        }); 
+        ); 
     } else {
-        filteredPokemons = allPokemons
+        filteredPokemons = allPokemons;
     }
 
     displayPokemons(filteredPokemons);
-    
+
     if (filteredPokemons.length === 0) {
-        notFoundMessage.computedStyleMap.display = "block";
+        notFoundMessage.style.display = "block";
     } else {
-        notFoundMessage.computedStyleMap.display = "none";
+        notFoundMessage.style.display = "none";
     }
 }
