@@ -13,7 +13,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=${MAX_POKEMON}`)     // first: fe
     allPokemons = data.results;
 });
 
-async function fetchPokemonDatabeforeRedirect(id) {
+async function fetchPokemonDatabeforeRedirect(id) {                 // enabling non-blocking behavior for the API call //
     try {
         const [pokemon, pokemonSpecies] = await Promise.all
         ([fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => 
@@ -29,15 +29,16 @@ async function fetchPokemonDatabeforeRedirect(id) {
     }
 }
 
-function displayPokemons(pokemon) {
-    listWrapper.innerHTML = "";
+function displayPokemons(pokemon) {                         // emptying the list wrapper so if pg reloads it's not adding PM on top of the
+    listWrapper.innerHTML = "";                             //  existing ones //
 
     pokemon.forEach((pokemon) => {
-        const pokemonID = pokemon.url.split("/")[6];            // this is asking after the 6th slash '/' is what we are asking for ex: 'https://pokeapi.co/api/v2/pokemon/ditto' has a total of 6 '/' before getting to ditto //
-        const listItem = document.createElement("div");
-        listItem.className = "list-item";
-        listItem.innerHTML = `
-        <div class="number-wrap">
+        const pokemonID = pokemon.url.split("/")[6];            // this is asking after the 6th slash '/' is what we are asking for ex: 
+        const listItem = document.createElement("div");         //'https://pokeapi.co/api/v2/pokemon/ditto' has a total of 6 '/' before 
+        listItem.className = "list-item";                       // getting to ditto //
+        listItem.innerHTML =                                    // cretaing the html structure and targeting each with it's id's //
+        `
+        <div class="number-wrap">                               
         <p class="caption-fonts">#${pokemonID} </p>
         </div>
         <div class="img-wrap">
@@ -48,12 +49,13 @@ function displayPokemons(pokemon) {
         </div>
         `;
 
-        listItem.addEventListener("click", async () => {
-            const success = await fetchPokemonDatabeforeRedirect(pokemonID);
-            if (success) {
+        listItem.addEventListener("click", async () => {                    // adding a click event that takes us to the details pg of every 
+            const success = await fetchPokemonDatabeforeRedirect(pokemonID);//PM that we click on from the main pg.
+            if (success) {                                                  // keeping the same html pg while loading different PM id's //
                 window.location.href = `./detail.html?id=${pokemonID}`;
             }
-        })
+        });
 
+        listWrapper.appendChild(listItem);                                  // adding all theses to the list wrapper //
     });                                                         
 }
