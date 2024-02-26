@@ -28,3 +28,21 @@ async function fetchPokemonDatabeforeRedirect(id) {
         console.error("Failed to fetch Pokemon data before redirect");
     }
 }
+
+function displayPokemons(pokemon) {
+    listWrapper.innerHTML = "";
+
+    pokemon.forEach((pokemon) => {
+        const pokemonID = pokemon.url.split("/")[6];            // this is asking after the 6th slash '/' is what we are asking for ex: 'https://pokeapi.co/api/v2/pokemon/ditto' has a total of 6 '/' before getting to ditto //
+        const listItem = document.createElement("div");
+        listItem.className = "list-item";
+        listItem.innerHTML = `
+        <div class="number-wrap">
+        <p class="caption-fonts">#${pokemonID} </p>
+        </div>
+        <div class="img-wrap">
+        <<img src="https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/other/dream-world/${pokemonId}.svg" alt="${pokemon.name}" /> 
+        </div>
+        `;
+    });                                                         
+}
