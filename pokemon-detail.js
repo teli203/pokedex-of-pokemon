@@ -87,3 +87,17 @@ const typeColors = {
   steel: "#B8B8D0",
   dark: "#EE99AC",
 };
+
+function setElementStyles(elements, cssProperty, value) {
+    elements.forEach((element) => {
+      element.style[cssProperty] = value;
+    });
+  }
+  
+  function rgbaFromHex(hexColor) {
+    return [
+      parseInt(hexColor.slice(1, 3), 16),
+      parseInt(hexColor.slice(3, 5), 16),
+      parseInt(hexColor.slice(5, 7), 16),
+    ].join(", ");
+  }
