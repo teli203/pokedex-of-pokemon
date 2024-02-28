@@ -101,3 +101,52 @@ function setElementStyles(elements, cssProperty, value) {
       parseInt(hexColor.slice(5, 7), 16),
     ].join(", ");
   }
+
+  function setTypeBackgroundColor(pokemon) {
+    const mainType = pokemon.types[0].type.name;
+    const color = typeColors[mainType];
+  
+    if (!color) {
+      console.warn(`Color not defined for type: ${mainType}`);
+      return;
+    }
+  
+    const detailMainElement = document.querySelector(".detail-main");
+    setElementStyles([detailMainElement], "backgroundColor", color);
+    setElementStyles([detailMainElement], "borderColor", color);
+  
+    setElementStyles(
+      document.querySelectorAll(".power-wrapper > p"),
+      "backgroundColor",
+      color
+    );
+  
+    setElementStyles(
+      document.querySelectorAll(".stats-wrap p.stats"),
+      "color",
+      color
+    );
+  
+    setElementStyles(
+      document.querySelectorAll(".stats-wrap .progress-bar"),
+      "color",
+      color
+    );
+  
+    const rgbaColor = rgbaFromHex(color);
+    const styleTag = document.createElement("style");
+    styleTag.innerHTML = `
+      .stats-wrap .progress-bar::-webkit-progress-bar {
+          background-color: rgba(${rgbaColor}, 0.5);
+      }
+      .stats-wrap .progress-bar::-webkit-progress-value {
+          background-color: ${color};
+      }
+    `;
+    document.head.appendChild(styleTag);
+  }
+  
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  }
+  
