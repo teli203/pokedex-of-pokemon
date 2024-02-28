@@ -12,3 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
     currentPokemonId = id;
     loadPokemon(id);
 });
+
+async function loadPokemon(id) {
+    try {}
+    catch (error) {
+        console.error("An error occured while fetching Pokemon data:", error);
+    }
+}
