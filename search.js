@@ -35,3 +35,22 @@ inputElement.addEventListener("input", () => {
       .classList.toggle("filter-wrapper-open");
     document.querySelector("body").classList.toggle("filter-wrapper-overlay");
   }
+/* Music and button elements */
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+bgMusic.loop = true;
+
+let musiPlaying = false;
+musicToggle.innerText = "Play Music";
+
+musicToggle.addEventListener("click", () => {
+    if(musiPlaying) {
+        bgMusic.pause();
+        musicToggle.innerText = "Play Music";
+    } else {
+        bgMusic.play();
+        musicToggle.innerText = "Pause Music";
+    }
+    musiPlaying = !musiPlaying;
+});

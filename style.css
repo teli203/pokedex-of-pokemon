@@ -136,6 +136,7 @@
     box-shadow: var(--drop-shadow-inner);
     height: 32px;
     gap: 8px;
+    box-shadow: 2px 2px 50px #252424;
   }
   
   .search-icon {
@@ -266,6 +267,7 @@
     text-decoration: none;
     cursor: pointer;
     border: 1px solid;
+    box-shadow: 2px 2px 19px #252424;
   }
   
   .list-item .number-wrap {
@@ -531,3 +533,25 @@
     border-color: transparent;
     background-color: transparent;
   }
+  #container {
+    width: 300px;
+    margin: 0 auto;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: left;
+    justify-content: center;
+}
+  #musicToggle {
+    background-color: #046616bc;
+    color: rgba(245, 245, 245, 0.931);
+    border: 1.5px solid black;
+    box-shadow: 2px 2px 19px #d20404;
+    padding: 8px;
+    border-radius: 8px;
+}
+#musicToggle:hover {
+    background-color: rgb(157, 155, 155);
+    cursor: pointer;
+}
