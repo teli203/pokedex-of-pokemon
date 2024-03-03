@@ -26,7 +26,7 @@ API Integration
 The project fetches data from the Poke API to populate the Pokedex with Pokemon information. It demonstrates how to use an open API like Poke API to retrieve data and utilize it in a web application.
 
 🌟Contributors🌟
-[Teli203]
+teli203
 Feel free to grab this code and add on to it, or add a different spin to it.
 
 💫Thank you for using our Pokedex! If you encounter any issues or have suggestions for improvement, please don't hesitate to let me know. Happy Coding!
